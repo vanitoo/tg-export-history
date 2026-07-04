@@ -2,16 +2,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #fafafa;
-  --card: #12121a;
-  --card-hover: #1a1a25;
-  --border: #2a2a3a;
-  --accent: #00d4ff;
-  --accent-glow: rgba(0, 212, 255, 0.3);
-  --success: #00ff88;
-  --error: #ff4466;
-  --muted: #6a6a7a;
+  --background: #07150f;
+  --foreground: #effcf3;
+  --card: #0d2419;
+  --card-hover: #143522;
+  --border: #24543a;
+  --accent: #74e39a;
+  --accent-strong: #2fbf71;
+  --accent-glow: rgba(116, 227, 154, 0.28);
+  --success: #9bf5b3;
+  --error: #ff6b7c;
+  --muted: #91ad9a;
 }
 
 @theme inline {
@@ -21,64 +22,61 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(47, 191, 113, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 95%, rgba(116, 227, 154, 0.08), transparent 36%),
+    var(--background);
   color: var(--foreground);
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
 }
 
-/* Animated grid background */
 .grid-bg {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: gridMove 20s linear infinite;
+    linear-gradient(rgba(116, 227, 154, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116, 227, 154, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: gridMove 22s linear infinite;
   pointer-events: none;
   z-index: 0;
 }
 
 @keyframes gridMove {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(60px, 60px); }
+  100% { transform: translate(56px, 56px); }
 }
 
-/* Glow orb */
 .glow-orb {
   position: fixed;
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.4;
+  filter: blur(86px);
+  opacity: 0.55;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Glassmorphism card */
 .glass-card {
-  background: rgba(18, 18, 26, 0.8);
+  background: linear-gradient(145deg, rgba(18, 54, 34, 0.88), rgba(9, 30, 20, 0.92));
   backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(116, 227, 154, 0.2);
   border-radius: 24px;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 20px 50px -20px rgba(0, 0, 0, 0.5);
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 24px 65px -28px rgba(0, 0, 0, 0.72);
 }
 
-/* Accent button */
 .btn-accent {
-  background: linear-gradient(135deg, var(--accent) 0%, #0088cc 100%);
-  color: #000;
-  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: #062010;
+  font-weight: 700;
   border-radius: 14px;
   transition: all 0.3s ease;
   box-shadow: 0 0 30px var(--accent-glow);
@@ -86,7 +84,8 @@ body {
 
 .btn-accent:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 0 50px var(--accent-glow);
+  box-shadow: 0 0 52px var(--accent-glow);
+  filter: saturate(1.08);
 }
 
 .btn-accent:disabled {
@@ -96,7 +95,6 @@ body {
   cursor: not-allowed;
 }
 
-/* Secondary button */
 .btn-secondary {
   background: var(--card);
   border: 1px solid var(--border);
@@ -108,10 +106,9 @@ body {
 
 .btn-secondary:hover {
   background: var(--card-hover);
-  border-color: var(--muted);
+  border-color: var(--accent);
 }
 
-/* Dropzone */
 .dropzone {
   border: 2px dashed var(--border);
   border-radius: 20px;
@@ -124,25 +121,22 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(0, 212, 255, 0.02) 100%);
+  background: linear-gradient(135deg, transparent 0%, rgba(116, 227, 154, 0.11) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .dropzone:hover::before,
-.dropzone.dragging::before {
-  opacity: 1;
-}
+.dropzone.dragging::before { opacity: 1; }
 
 .dropzone:hover,
 .dropzone.dragging {
   border-color: var(--accent);
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 42px rgba(116, 227, 154, 0.15);
 }
 
-/* Progress bar */
 .progress-track {
-  background: var(--card);
+  background: rgba(5, 20, 12, 0.72);
   border-radius: 10px;
   overflow: hidden;
   height: 8px;
@@ -150,15 +144,14 @@ body {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, #00ff88 100%);
+  background: linear-gradient(90deg, var(--accent-strong) 0%, var(--accent) 100%);
   border-radius: 10px;
   transition: width 0.4s ease-out;
   box-shadow: 0 0 20px var(--accent-glow);
 }
 
-/* Stats grid */
 .stat-item {
-  background: var(--card);
+  background: rgba(7, 28, 17, 0.62);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
@@ -166,13 +159,12 @@ body {
 }
 
 .stat-item:hover {
-  border-color: var(--muted);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 
-/* Input styling */
 .input-field {
-  background: var(--card);
+  background: rgba(4, 20, 12, 0.7);
   border: 1px solid var(--border);
   border-radius: 12px;
   color: var(--foreground);
@@ -186,7 +178,6 @@ body {
   box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
-/* Custom checkbox */
 .checkbox-custom {
   appearance: none;
   width: 20px;
@@ -211,21 +202,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
+  color: #062010;
   font-size: 12px;
   font-weight: bold;
 }
 
-/* Animations */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
@@ -233,39 +217,27 @@ body {
   50% { opacity: 0.5; }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.animate-pulse-slow {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-/* Staggered animations */
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+.animate-pulse-slow { animation: pulse 2s ease-in-out infinite; }
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
 
-/* Code tag */
 .code-tag {
   font-family: 'JetBrains Mono', monospace;
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: rgba(116, 227, 154, 0.09);
+  border: 1px solid rgba(116, 227, 154, 0.25);
   padding: 2px 8px;
   border-radius: 6px;
   font-size: 0.875em;
   color: var(--accent);
 }
 
-/* Error state */
 .error-box {
-  background: rgba(255, 68, 102, 0.1);
-  border: 1px solid rgba(255, 68, 102, 0.3);
+  background: rgba(255, 107, 124, 0.1);
+  border: 1px solid rgba(255, 107, 124, 0.3);
   border-radius: 14px;
 }
 
-/* Success state */
-.success-glow {
-  box-shadow: 0 0 60px rgba(0, 255, 136, 0.2);
-}
+.success-glow { box-shadow: 0 0 60px rgba(116, 227, 154, 0.18); }
