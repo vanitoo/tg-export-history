@@ -10,6 +10,7 @@ import { SettingsPanel } from '@/components/SettingsPanel';
 import { ProgressBar } from '@/components/ProgressBar';
 import { ResultCard } from '@/components/ResultCard';
 import { ErrorMessage } from '@/components/ErrorMessage';
+const APP_VERSION = 'v0.2.0-green-preview';
 
 type AppState = 'idle' | 'processing' | 'done' | 'error';
 
@@ -139,6 +140,7 @@ export default function Home() {
               <span>✈️</span>
               <span>@vanuwka</span>
             </a>
+            <p className="text-xs text-[var(--muted)] opacity-70">{APP_VERSION}</p>
           </footer>
         </div>
       </main>
