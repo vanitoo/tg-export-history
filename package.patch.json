@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "pages:build": "GITHUB_PAGES=true NEXT_PUBLIC_BASE_PATH=/tg-history-convert next build"
+  }
+}
