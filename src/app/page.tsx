@@ -71,14 +71,12 @@ export default function Home() {
 
   return (
     <>
-      {/* Background effects */}
       <div className="grid-bg" />
       <div className="glow-orb" style={{ top: '-200px', left: '-200px' }} />
       <div className="glow-orb" style={{ bottom: '-300px', right: '-200px', opacity: 0.2 }} />
 
       <main className="relative z-10 min-h-screen py-12 px-4 flex flex-col items-center justify-center">
         <div className="w-full max-w-lg space-y-8">
-          {/* Header */}
           <header className="text-center space-y-4 opacity-0 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--card)]">
               <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse-slow" />
@@ -96,33 +94,18 @@ export default function Home() {
             </p>
           </header>
 
-          {/* Main card */}
           <div className={`glass-card p-6 sm:p-8 space-y-6 opacity-0 animate-fade-in-up stagger-2 ${state === 'done' ? 'success-glow' : ''}`}>
             {state === 'done' && result ? (
               <ResultCard result={result} onReset={handleReset} />
             ) : (
               <>
-                <FileDropzone
-                  onFileSelect={handleFileSelect}
-                  disabled={state === 'processing'}
-                />
+                <FileDropzone onFileSelect={handleFileSelect} disabled={state === 'processing'} />
 
-                {error && (
-                  <ErrorMessage
-                    message={error}
-                    onDismiss={() => setError(null)}
-                  />
-                )}
+                {error && <ErrorMessage message={error} onDismiss={() => setError(null)} />}
 
-                <SettingsPanel
-                  settings={settings}
-                  onChange={setSettings}
-                  disabled={state === 'processing'}
-                />
+                <SettingsPanel settings={settings} onChange={setSettings} disabled={state === 'processing'} />
 
-                {state === 'processing' && progress && (
-                  <ProgressBar progress={progress} />
-                )}
+                {state === 'processing' && progress && <ProgressBar progress={progress} />}
 
                 <button
                   onClick={handleConvert}
@@ -145,19 +128,16 @@ export default function Home() {
             )}
           </div>
 
-          {/* Footer */}
           <footer className="text-center opacity-0 animate-fade-in-up stagger-3 space-y-2">
-            <p className="text-sm text-[var(--muted)]">
-              🔒 Все данные обрабатываются локально в браузере
-            </p>
+            <p className="text-sm text-[var(--muted)]">🔒 Все данные обрабатываются локально в браузере</p>
             <a
-              href="https://t.me/AI_Handler"
+              href="https://t.me/vanuwka"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
             >
               <span>✈️</span>
-              <span>@AI_Handler</span>
+              <span>@vanuwka</span>
             </a>
           </footer>
         </div>
