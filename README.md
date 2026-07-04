@@ -2,7 +2,7 @@
 
 Веб-приложение для конвертации экспорта чата Telegram в Markdown-файлы, оптимизированные для загрузки в Google NotebookLM.
 
-🔗 **Demo:** [tg-history-history](https://tg-history-history)
+🔗 **Demo:** [tg-history-history](https://vanitoo.github.io/tg-export-history)
 
 ## Возможности
 
@@ -24,7 +24,7 @@
 
 ### 2. Конвертируйте на сайте
 
-1. Откройте [tg-history-history](https://tg-history-history)
+1. Откройте [tg-history-history](https://vanitoo.github.io/tg-export-history)
 2. Перетащите файл `result.json` в зону загрузки
 3. Настройте параметры (опционально)
 4. Нажмите **Конвертировать**
